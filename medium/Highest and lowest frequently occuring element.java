@@ -76,3 +76,50 @@ public static void main(String[] args) {
 
 USING HASHING (HASHMAP)
 Code:
+public static void main(String[] args) {
+        int[] arr = {10,10,10,3,3,3};
+        //arr = getFrequencies(arr);
+        getFrequencies(arr);
+    }
+        public static void getFrequencies(int[] v) {
+            HashMap<Integer,Integer> hash = new HashMap<>();
+            for(int i = 0;i<v.length;i++)
+            {
+                if(hash.containsKey(v[i]))
+                {
+                    hash.put(v[i], hash.get(v[i])+1);
+                }
+                else{
+                    hash.put(v[i], 1);
+                }
+            }
+            // this is an iterator which gets a next function for the given hash
+            Map.Entry<Integer,Integer> hello = hash.entrySet().iterator().next();
+            
+            int min = hello.getValue();
+            int max = hello.getValue();
+            int max_key  = hello.getKey();
+            int min_key = hello.getKey();
+            
+            // here we initialized a for loop for the hashmap so that we iterate through each set and check for the validation to attain results
+            for(Entry<Integer, Integer> e : hash.entrySet())
+            {
+                System.out.print(e.getKey() + " ");
+                
+                System.out.print(e.getValue());
+                System.out.println(" ");
+                if(max < e.getValue())
+                {
+                    max = e.getValue();
+                    max_key = e.getKey();
+                }
+                if(min>e.getValue())
+                {
+                    min = e.getValue();
+                    min_key = e.getKey();
+                }
+               
+            }
+            System.out.println(min_key + " " + max_key);
+            
+    }
